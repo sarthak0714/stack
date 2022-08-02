@@ -38,10 +38,54 @@ void peek(){
 void size(){
     printf("The stcak has %d positions left",4-top);
 }
+#include<stdio.h>
+int top=-1,stack[100],n;     
+
+//PUSH
+void push(){
+    int a;
+    printf("Enter data: ");
+    scanf("%d",&a);
+
+    if(top==n){
+        printf("Overflow!\n");
+    }
+    else
+        top+=1;
+        stack[top]=a; 
+}       
+//POP
+void pop(){
+    int t;
+    if(top==-1)
+        printf("Underflow.\n");
+    else{
+        t=stack[top];
+        top--;
+        printf("\nThe removed element is %d",t);
+    }
+}
+//PEEK
+void peek(){
+    //printf("Enter the poaition you want to peek: ");
+    if(top==-1){
+        printf("Empty stack\n");
+    }
+    else
+        printf("\n%d",stack[top]);
+}
+//SIZE
+void size(){
+    if(top==-1){
+        printf("\nThe stack is empty.");
+    }
+    else
+        printf("The stack has %d positions left",n-1-top);
+}
 //DISPLAY
 void display(){
     printf("[");
-    for(int i=0;i<=top;i++){
+    for(int i=top;i>=0;i--){
         printf("%d\t",stack[i]);
     }
     printf("]");
@@ -49,6 +93,9 @@ void display(){
 void main(){
     char ans[10];
     int c;
+    printf("Enter the size of the array: ");
+    scanf("%d",&n);
+    
     do{
         printf("Enter your operation:\n1.Push\n2.Peek\n3.Size\n4.Pop\n5.Display\n6.Size\n::");
         scanf("%d",&c);
